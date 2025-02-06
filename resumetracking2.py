@@ -49,6 +49,11 @@ if submit:
         text = input_pdf_text(uploaded_file)
         input_prompt = input_prompt.format(jd=jd, text=text)
         response = get_gemini_response(input_prompt)
-        st.subheader("The response is :")
+        st.subheader("The response in raw json format is :")
         st.write(response)
+        data = json.loads(response)
+        pretty_json = json.dumps(data, indent=4)
+        st.write(pretty_json)
+
+
 
