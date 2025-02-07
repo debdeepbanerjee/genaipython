@@ -5,6 +5,7 @@ import os
 import PyPDF2 as pdf
 from dotenv import load_dotenv
 import json
+import textwrap
 
 load_dotenv()
 
@@ -51,9 +52,8 @@ if submit:
         response = get_gemini_response(input_prompt)
         st.subheader("The response in raw json format is :")
         st.write(response)
-        data = json.loads(response)
-        pretty_json = json.dumps(data, indent=4)
-        st.write(pretty_json)
+        wrapped_text = textwrap.wrap(response, width=20)
+        st.write(wrapped_text)
 
 
 
